@@ -1,7 +1,5 @@
 package com.example.task_manager_4.ui.onboarding.adapter
 
-import android.renderscript.ScriptGroup.Binding
-import android.util.Log.i
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -9,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.example.task_manager_4.databinding.ItemOnboardingBinding
-import com.example.task_manager_4.databinding.ItemTaskBinding
 import com.example.task_manager_4.model.OnBoarding
 
 class OnBoardingAdapter(private val onClick: () -> Unit): Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
