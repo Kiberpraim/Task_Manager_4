@@ -17,7 +17,7 @@ import com.example.task_manager_4.ui.home.adapter.TaskAdapter
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val adapter = TaskAdapter(this::onLongClickTask)
+    private val adapter = TaskAdapter(this::onLongClickTask,this::onClickTask)
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        remakeTasksList()
+        updateTasksList()
 
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
@@ -40,25 +40,29 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = adapter
     }
 
+    private fun onClickTask(bundle: Bundle){
+        findNavController().navigate(R.id.taskUpdateFragment,bundle)
+    }
+
     private fun onLongClickTask(task: Task) {
         val dialogBuilder = AlertDialog.Builder(requireActivity())
 
-        dialogBuilder.setTitle("Вы хотите удилить?")
-            .setMessage("Если вы удалите \"${task.title}\" то востановлени будет невозможным.")
-            .setPositiveButton("OK") { dialog: DialogInterface, _: Int ->
+        dialogBuilder.setTitle(getString(R.string.you_wont_delete))
+            .setMessage(getString(R.string.recovery_is_not_possible))
+            .setPositiveButton(getString(R.string.ok)) { dialog: DialogInterface, _: Int ->
                 // Обработка нажатия кнопки "OK"
                 App.db.taskDao().delete(task)
-                remakeTasksList()
+                updateTasksList()
                 dialog.dismiss()
             }
-            .setNegativeButton("Отмена") { dialog: DialogInterface, _: Int ->
+            .setNegativeButton(getString(R.string.cancel)) { dialog: DialogInterface, _: Int ->
                 // Обработка нажатия кнопки "Отмена"
                 dialog.dismiss()
             }
         dialogBuilder.show()
     }
 
-    private fun remakeTasksList() {
+    private fun updateTasksList() {
         val list = App.db.taskDao().getAll()
         adapter.setTasks(list)
     }

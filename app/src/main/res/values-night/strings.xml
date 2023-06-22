@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="you_wont_delete">Вы хотите удилить?</string>
+    <string name="recovery_is_not_possible">Если вы удалите то востановлени будет невозможным!</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Отмена</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+</resources>

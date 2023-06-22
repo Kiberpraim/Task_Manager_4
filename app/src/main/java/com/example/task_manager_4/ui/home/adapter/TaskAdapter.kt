@@ -1,5 +1,6 @@
 package com.example.task_manager_4.ui.home.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
@@ -7,15 +8,9 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.task_manager_4.databinding.ItemTaskBinding
 import com.example.task_manager_4.model.Task
 
-class TaskAdapter(private val onLongClickTask: (Task) -> Unit) :
+class TaskAdapter(private val onLongClickTask: (Task) -> Unit,private val onClickTask: (Bundle) -> Unit) :
     Adapter<TaskAdapter.TaskViewHolder>() {
-
     private val list = arrayListOf<Task>()
-
-    fun addTask(task: Task) {
-        list.add(0, task)
-        notifyDataSetChanged()
-    }
 
     fun setTasks(tasks: List<Task>) {
         list.clear()
@@ -47,7 +42,11 @@ class TaskAdapter(private val onLongClickTask: (Task) -> Unit) :
                 onLongClickTask(task)
                 false
             }
+            itemView.setOnClickListener {
+                val bundle: Bundle = Bundle()
+                bundle.putSerializable("TASK",task)
+                onClickTask(bundle)
+            }
         }
-
     }
 }

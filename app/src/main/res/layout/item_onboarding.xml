@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="140dp"
-        android:text="Get start"
+        android:text="@string/get_start"
         android:visibility="gone" />
 
 </LinearLayout>
