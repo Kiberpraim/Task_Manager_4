@@ -8,20 +8,20 @@ class Pref(private val context: Context) {
         context.getSharedPreferences(PREF_NAME, MODE_PRIVATE)
     }
 
-    fun isUserSeen(): Boolean{
-        return pref.getBoolean(SEEN_KEY,false)
+    fun isUserSeen(): Boolean {
+        return pref.getBoolean(SEEN_KEY, false)
     }
 
     fun saveSeen() {
-        pref.edit().putBoolean(SEEN_KEY,true).apply()
+        pref.edit().putBoolean(SEEN_KEY, true).apply()
     }
 
-    fun saveProfileName(name: String){
+    fun saveProfileName(name: String) {
         pref.edit().putString(NAME_KEY, name).apply()
     }
 
-    fun getProfileName(): String?{
-        return pref.getString(NAME_KEY,"")
+    fun getProfileName(): String? {
+        return pref.getString(NAME_KEY, "")
     }
 
     fun saveImage(image: String) {

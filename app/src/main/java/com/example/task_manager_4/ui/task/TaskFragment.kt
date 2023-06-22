@@ -26,12 +26,12 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnSave.setOnClickListener{
+        binding.btnSave.setOnClickListener {
             onSave()
         }
     }
 
-    private fun onSave(){
+    private fun onSave() {
         val data = Task(
             title = binding.etTitle.text.toString(),
             description = binding.etDescription.text.toString()
@@ -40,7 +40,7 @@ class TaskFragment : Fragment() {
         findNavController().navigateUp()
     }
 
-    companion object{
+    companion object {
         const val TASK_REQUEST = "task.result"
         const val TASK_KEY = "task.result"
     }

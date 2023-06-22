@@ -17,9 +17,6 @@ import com.example.task_manager_4.ui.home.adapter.TaskAdapter
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val adapter = TaskAdapter(this::onLongClickTask)
     private val binding get() = _binding!!
 
@@ -43,7 +40,7 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = adapter
     }
 
-    private fun onLongClickTask(task: Task){
+    private fun onLongClickTask(task: Task) {
         val dialogBuilder = AlertDialog.Builder(requireActivity())
 
         dialogBuilder.setTitle("Вы хотите удилить?")
@@ -54,14 +51,14 @@ class HomeFragment : Fragment() {
                 remakeTasksList()
                 dialog.dismiss()
             }
-            .setNegativeButton("Отмена"){ dialog: DialogInterface, _: Int ->
+            .setNegativeButton("Отмена") { dialog: DialogInterface, _: Int ->
                 // Обработка нажатия кнопки "Отмена"
                 dialog.dismiss()
             }
         dialogBuilder.show()
     }
 
-    private fun remakeTasksList(){
+    private fun remakeTasksList() {
         val list = App.db.taskDao().getAll()
         adapter.setTasks(list)
     }

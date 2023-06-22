@@ -7,12 +7,13 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.task_manager_4.databinding.ItemTaskBinding
 import com.example.task_manager_4.model.Task
 
-class TaskAdapter(private val onLongClickTask: (Task) -> Unit) : Adapter<TaskAdapter.TaskViewHolder>() {
+class TaskAdapter(private val onLongClickTask: (Task) -> Unit) :
+    Adapter<TaskAdapter.TaskViewHolder>() {
 
     private val list = arrayListOf<Task>()
 
     fun addTask(task: Task) {
-        list.add(0,task)
+        list.add(0, task)
         notifyDataSetChanged()
     }
 
