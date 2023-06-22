@@ -29,7 +29,6 @@ class ProfileFragment : Fragment() {
                 val uri: Uri? = it.data?.data
                 pref.saveImage(uri.toString())
                 binding.imgAvaProfile.loadImage(uri.toString())
-
             }
         }
 
