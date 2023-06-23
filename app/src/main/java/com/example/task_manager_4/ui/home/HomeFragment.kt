@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun onClickTask(bundle: Bundle){
-        findNavController().navigate(R.id.taskUpdateFragment,bundle)
+        findNavController().navigate(R.id.taskFragment,bundle)
     }
 
     private fun onLongClickTask(task: Task) {

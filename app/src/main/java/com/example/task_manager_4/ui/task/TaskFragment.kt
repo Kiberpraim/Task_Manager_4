@@ -10,6 +10,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
 import com.example.task_manager_4.App
+import com.example.task_manager_4.R
 import com.example.task_manager_4.databinding.FragmentProfileBinding
 import com.example.task_manager_4.model.Task
 
@@ -17,6 +18,7 @@ class TaskFragment : Fragment() {
 
     private var _binding: FragmentTaskBinding? = null
     private val binding get() = _binding!!
+    lateinit var task: Task
 
 
     override fun onCreateView(
@@ -29,8 +31,19 @@ class TaskFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnSave.setOnClickListener {
-            onSave()
+        if (arguments == null) {
+            binding.btnSave.setOnClickListener {
+                onSave()
+            }
+        }else{
+            task = arguments!!.getSerializable("TASK") as Task
+            binding.etTitle.setText(task.title)
+            binding.etDescription.setText(task.description)
+            binding.btnSave.text = (getString(R.string.update))
+
+            binding.btnSave.setOnClickListener {
+                onUpdate()
+            }
         }
     }
 
@@ -40,6 +53,16 @@ class TaskFragment : Fragment() {
             description = binding.etDescription.text.toString()
         )
         App.db.taskDao().insert(data)
+        findNavController().navigateUp()
+    }
+
+    private fun onUpdate() {
+        val data = Task(
+            id = task.id,
+            title = binding.etTitle.text.toString(),
+            description = binding.etDescription.text.toString()
+        )
+        App.db.taskDao().update(data)
         findNavController().navigateUp()
     }
 

@@ -43,7 +43,7 @@ class TaskAdapter(private val onLongClickTask: (Task) -> Unit,private val onClic
                 false
             }
             itemView.setOnClickListener {
-                val bundle: Bundle = Bundle()
+                val bundle = Bundle()
                 bundle.putSerializable("TASK",task)
                 onClickTask(bundle)
             }
