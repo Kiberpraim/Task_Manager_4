@@ -17,7 +17,7 @@ import com.example.task_manager_4.ui.home.adapter.TaskAdapter
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val adapter = TaskAdapter(this::onLongClickTask,this::onClickTask)
+    private val adapter = TaskAdapter(this::onLongClickTask, this::onClickTask)
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateTasksList()
+        getTasksList()
 
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
@@ -40,8 +40,8 @@ class HomeFragment : Fragment() {
         binding.recyclerView.adapter = adapter
     }
 
-    private fun onClickTask(bundle: Bundle){
-        findNavController().navigate(R.id.taskFragment,bundle)
+    private fun onClickTask(bundle: Bundle) {
+        findNavController().navigate(R.id.taskFragment, bundle)
     }
 
     private fun onLongClickTask(task: Task) {
@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
             .setPositiveButton(getString(R.string.ok)) { dialog: DialogInterface, _: Int ->
                 // Обработка нажатия кнопки "OK"
                 App.db.taskDao().delete(task)
-                updateTasksList()
+                getTasksList()
                 dialog.dismiss()
             }
             .setNegativeButton(getString(R.string.cancel)) { dialog: DialogInterface, _: Int ->
@@ -62,7 +62,7 @@ class HomeFragment : Fragment() {
         dialogBuilder.show()
     }
 
-    private fun updateTasksList() {
+    private fun getTasksList() {
         val list = App.db.taskDao().getAll()
         adapter.setTasks(list)
     }

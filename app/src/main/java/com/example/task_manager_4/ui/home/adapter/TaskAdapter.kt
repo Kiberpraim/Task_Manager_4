@@ -7,8 +7,12 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.task_manager_4.databinding.ItemTaskBinding
 import com.example.task_manager_4.model.Task
+import com.example.task_manager_4.ui.task.TaskFragment
 
-class TaskAdapter(private val onLongClickTask: (Task) -> Unit,private val onClickTask: (Bundle) -> Unit) :
+class TaskAdapter(
+    private val onLongClickTask: (Task) -> Unit,
+    private val onClickTask: (Bundle) -> Unit
+) :
     Adapter<TaskAdapter.TaskViewHolder>() {
     private val list = arrayListOf<Task>()
 
@@ -44,7 +48,7 @@ class TaskAdapter(private val onLongClickTask: (Task) -> Unit,private val onClic
             }
             itemView.setOnClickListener {
                 val bundle = Bundle()
-                bundle.putSerializable("TASK",task)
+                bundle.putSerializable(TaskFragment.TASK_KEY, task)
                 onClickTask(bundle)
             }
         }
