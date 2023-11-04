@@ -46,7 +46,7 @@ class TaskFragment : Fragment() {
         }
     }
 
-    private fun ionSave() {
+    private fun onSave() {
         val data = Task(
             title = binding.etTitle.text.toString(),
             description = binding.etDescription.text.toString()
