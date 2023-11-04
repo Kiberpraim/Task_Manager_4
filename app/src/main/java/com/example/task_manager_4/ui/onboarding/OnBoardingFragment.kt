@@ -34,9 +34,8 @@ class OnBoardingFragment : Fragment() {
         binding.indicator.setViewPager(binding.viewPager)
     }
 
-    private fun onClick() {
-        pref.saveSeen()
-        findNavController().navigateUp()
+    private fun onClick() { pref.saveSeen()
+        findNavController().navigate(com.example.task_manager_4.R.id.action_onBoardingFragment_to_phoneFragment)
     }
 
 }

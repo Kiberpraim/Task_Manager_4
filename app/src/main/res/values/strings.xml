@@ -20,5 +20,9 @@
     <string name="navigation_task">Task</string>
     <string name="navigation_profile">Profile</string>
     <string name="update_task">Update Task</string>
+    <string name="enter_number_phone">Введите номер телефона</string>
+    <string name="send_code">Отправить код</string>
+    <string name="et_label">Label</string>
+    <string name="et_model">Model</string>
 </resources>
 

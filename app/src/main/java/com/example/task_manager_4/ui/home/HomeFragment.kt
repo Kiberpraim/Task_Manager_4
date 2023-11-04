@@ -17,8 +17,8 @@ import com.example.task_manager_4.ui.home.adapter.TaskAdapter
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-    private val adapter = TaskAdapter(this::onLongClickTask, this::onClickTask)
     private val binding get() = _binding!!
+    private val adapter = TaskAdapter(this::onLongClickTask, this::onClickTask)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,7 +36,6 @@ class HomeFragment : Fragment() {
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }
-
         binding.recyclerView.adapter = adapter
     }
 
@@ -46,7 +45,6 @@ class HomeFragment : Fragment() {
 
     private fun onLongClickTask(task: Task) {
         val dialogBuilder = AlertDialog.Builder(requireActivity())
-
         dialogBuilder.setTitle(getString(R.string.you_wont_delete))
             .setMessage(getString(R.string.recovery_is_not_possible))
             .setPositiveButton(getString(R.string.ok)) { dialog: DialogInterface, _: Int ->

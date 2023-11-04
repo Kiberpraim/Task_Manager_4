@@ -46,8 +46,7 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
 
     override fun getItemCount(): Int = list.size
 
-    inner class OnBoardingViewHolder(private val binding: ItemOnboardingBinding) :
-        ViewHolder(binding.root) {
+    inner class OnBoardingViewHolder(private val binding: ItemOnboardingBinding) : ViewHolder(binding.root) {
         fun bind(onBoarding: OnBoarding) {
             binding.tvTitle.text = onBoarding.title
             binding.tvDescription.text = onBoarding.description

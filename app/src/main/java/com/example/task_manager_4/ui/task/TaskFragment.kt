@@ -17,7 +17,6 @@ class TaskFragment : Fragment() {
     private val binding get() = _binding!!
     private var task: Task? = null
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,7 +46,7 @@ class TaskFragment : Fragment() {
         }
     }
 
-    private fun onSave() {
+    private fun ionSave() {
         val data = Task(
             title = binding.etTitle.text.toString(),
             description = binding.etDescription.text.toString()
@@ -62,7 +61,7 @@ class TaskFragment : Fragment() {
             title = binding.etTitle.text.toString(),
             description = binding.etDescription.text.toString()
         )
-        data?.let { App.db.taskDao().update(it) }
+        data?.let { App.db.taskDao().update(data) }
         findNavController().navigateUp()
     }
 

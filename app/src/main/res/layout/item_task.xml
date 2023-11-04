@@ -13,7 +13,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textSize="24sp"
-        tools:text="Title" />
+        tools:text="Title"
+        android:maxLines="1" />
 
     <TextView
         android:id="@+id/tv_description"
@@ -21,5 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:textSize="20sp"
-        tools:text="Description" />
+        tools:text="Description"
+        android:maxLines="2" />
 </LinearLayout>

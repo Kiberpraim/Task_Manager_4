@@ -39,11 +39,34 @@
         android:id="@+id/onBoardingFragment"
         android:name="com.example.task_manager_4.ui.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
-        tools:layout="@layout/fragment_on_boarding" />
+        tools:layout="@layout/fragment_on_boarding" >
+
+        <action
+            android:id="@+id/action_onBoardingFragment_to_phoneFragment"
+            app:destination="@id/phoneFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/phoneFragment" />
+
+    </fragment>
+
     <fragment
-        android:id="@+id/taskUpdateFragment"
-        android:name="com.example.task_manager_4.ui.task.TaskUpdateFragment"
-        android:label="@string/update_task"
-        tools:layout="@layout/fragment_task_update" />
+        android:id="@+id/phoneFragment"
+        android:name="com.example.task_manager_4.ui.auth.phone.PhoneFragment"
+        android:label="PhoneFragment"
+        tools:layout="@layout/fragment_phone" />
+
+    <fragment
+        android:id="@+id/acceptFragment"
+        android:name="com.example.task_manager_4.ui.auth.accept.AcceptFragment"
+        android:label="AcceptFragment"
+        tools:layout="@layout/fragment_accept" >
+
+        <action
+            android:id="@+id/action_acceptFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/navigation_home"/>
+
+    </fragment>
 
 </navigation>
